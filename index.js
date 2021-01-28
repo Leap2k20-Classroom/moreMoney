@@ -1,4 +1,4 @@
-var gishuun = [
+var gishuuns = [
   {
     'name': 'Zoe',
     'uria': 'Ta hedig ur huuhed shigee hairlana',
@@ -31,6 +31,24 @@ var gishuun = [
 ]
 
 function search(maxPrecentage) {
+
+  var max = 0, gishuunId;
+
+  for(var i = 0; i < gishuuns.length; i ++) {
+    let tempMax = 0;
+    for(var j = 1; j <= maxPrecentage; j ++) {
+      var score = gishuuns[i].money * (j / 100) + gishuuns[i].sanal_too * ( (100 - j) / 100);
+      console.log(score)
+      if(tempMax < score ) { 
+        tempMax = score;
+      }
+    }
+    if(max < tempMax) { 
+      max = tempMax;
+      gishuunId = gishuuns[i].id;
+    }
+  }
+  return gishuunId;
   //return "some gishuun id"; 
 }
 
